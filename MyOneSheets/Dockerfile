@@ -7,16 +7,16 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["MySheetTest1/MySheetTest1.csproj", "MySheetTest1/"]
-RUN dotnet restore "MySheetTest1/MySheetTest1.csproj"
+COPY ["MyOneSheets/MyOneSheets.csproj", "MyOneSheets/"]
+RUN dotnet restore "MyOneSheets/MyOneSheets.csproj"
 COPY . .
-WORKDIR "/src/MySheetTest1"
-RUN dotnet build "MySheetTest1.csproj" -c Release -o /app/build
+WORKDIR "/src/MyOneSheets"
+RUN dotnet build "MyOneSheets.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "MySheetTest1.csproj" -c Release -o /app/publish
+RUN dotnet publish "MyOneSheets.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "MySheetTest1.dll"]
+ENTRYPOINT ["dotnet", "MyOneSheets.dll"]
