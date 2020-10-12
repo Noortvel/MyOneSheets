@@ -1,0 +1,66 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "_Layout";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-2">
+            <div class="flex-column">
+                @*fixed-top form-control*@
+                <div id="recordsList" class="list-group">
+                    <p class="list-group-item">
+                        <b>@User.Identity.Name</b>
+                        <br />
+                        Records:
+                    </p>
+                </div>
+                <button type="button" id="addButton" class="btn btn-primary btn-block">Add</button>
+                <button type="button" id="removeButton" class="btn btn-danger btn-block" data-toggle="modal" data-target="#exampleModal">
+                    Remove
+                </button>
+
+            </div>
+        </div>
+        <div class="col-10 ">
+            <div>
+                <textarea id="editor" hidden>
+                </textarea>
+            </div>
+            <div id="loader-spinner-selector" class="d-flex align-items-center">
+                <strong>Loading...</strong>
+                <div class="spinner-border ml-lg-auto" role="status" aria-hidden="true"></div>
+            </div>
+            <h1 id="no-records-selector" class="display-2 d-none">Not created records, press <b>Add</b></h1>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title removed-record-name-selector" id="exampleModalLabel">EMPTY NAME</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you shure delete <b class="removed-record-name-selector">EMPTY NAME</b>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                <button id="removeButtonForce" type="button" data-dismiss="modal" class="btn btn-danger">Yes, delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+    <script src="~/lib/jodit/jodit.es2018.min.js"></script>
+    <script src="~/js/MainSheet/main-sheet-model.js"></script>
+    <script src="~/js/MainSheet/main-sheet-manager.js"></script>
+    <script src="~/js/MainSheet/main-sheet-script.js"></script>
+    <script>
+
+    </script>
+}

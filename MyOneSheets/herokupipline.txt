@@ -1,0 +1,8 @@
+heroku login
+heroku container:login
+
+docker rmi registry.heroku.com/myonesheets/web
+docker tag mysheettest1 registry.heroku.com/myonesheets/web
+docker push registry.heroku.com/myonesheets/web
+heroku container:release web --app myonesheets
+.

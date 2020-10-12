@@ -1,0 +1,14 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "jodit@3.4.28",
+      "destination": "wwwroot/lib/jodit/",
+      "files": [
+        "jodit.es2018.min.css",
+        "jodit.es2018.min.js"
+      ]
+    }
+  ]
+}
